@@ -146,3 +146,24 @@ text-shadow: 0 0 12px;
     position: relative;
     bottom: 15px;
 }
+
+/* Add this at the end or in an appropriate section */
+#LightModeBtn {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    margin: 20px auto;
+    display: block;
+}
+
+#LightModeBtn:hover {
+    background-color: #fff;
+    color: #222;
+    border: 1px solid #222;
+}

@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, { passive: false });
 
-    const modeBtn = document.getElementById('darkModeBtn');
+    const modeBtn = document.getElementById('LightModeBtn');
     let isDark = true;
     if (modeBtn) {
         modeBtn.textContent = "Light Mode";
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
             isDark = !isDark;
             modeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
             if (!isDark) {
-                window.location.href = "dark.html";
+                window.location.href = "index copy.html"; // Light Mode
             } else {
-                window.location.href = "dark copy.html";
+                window.location.href = "index.html"; // Dark Mode
             }
         });
     }

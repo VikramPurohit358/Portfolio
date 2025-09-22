@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let locked = true;
     let animating = false;
 
-    // Lock scroll for the first viewport
     document.body.style.overflow = "hidden";
 
     function updateScroll() {
@@ -21,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     updateScroll();
 
     window.addEventListener('wheel', function(e) {
-        if (!locked || animating) return; // If unlocked or animating, ignore
+        if (!locked || animating) return; 
 
-        if (e.deltaY > 0) { // Scroll down
+        if (e.deltaY > 0) { 
             if (currentIndex < wordCount - 1) {
                 e.preventDefault();
                 animating = true;
@@ -31,18 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateScroll();
                 setTimeout(() => {
                     animating = false;
-                }, 1600); // 1.5s animation + 0.1s buffer
+                }, 1600); 
             } else if (currentIndex === wordCount - 1) {
-                // At last word, unlock scroll on next scroll down
                 e.preventDefault();
                 animating = true;
                 locked = false;
                 setTimeout(() => {
                     document.body.style.overflow = "";
                     animating = false;
-                }, 900); // 0.8s animation + 0.1s buffer
+                }, 900); 
             }
-        } else if (e.deltaY < 0) { // Scroll up
+        } else if (e.deltaY < 0) { 
             if (currentIndex > 0) {
                 e.preventDefault();
                 animating = true;
@@ -50,12 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateScroll();
                 setTimeout(() => {
                     animating = false;
-                }, 1600); // 1.5s animation + 0.1s buffer
+                }, 1600); 
             }
         }
     }, { passive: false });
 
-    // Dark/Light mode button toggle
     const modeBtn = document.getElementById('darkModeBtn');
     let isDark = true;
     if (modeBtn) {
@@ -64,8 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
             isDark = !isDark;
             modeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
             if (!isDark) {
-                // Open dark.html in the same tab
                 window.location.href = "dark.html";
+            } else {
+                window.location.href = "dark copy.html";
             }
         });
     }

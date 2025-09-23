@@ -3,21 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollInner = document.querySelector('.scroll-inner');
     const words = document.querySelectorAll('.scroll-inner .ing');
     const wordCount = words.length;
-    const wordHeight = scrollContainer.offsetHeight;
+    const wordHeight = scrollContainer ? scrollContainer.offsetHeight : 0;
     let currentIndex = 0;
     let locked = true;
     let animating = false;
 
-    // Only lock scroll while in animated scroll section
     if (locked) {
         document.body.style.overflow = "hidden";
     }
 
     function updateScroll() {
-        scrollInner.style.transform = `translateY(-${currentIndex * wordHeight}px)`;
-        words.forEach((el, i) => {
-            el.classList.toggle('active', i === currentIndex);
-        });
+        if (scrollInner) {
+            scrollInner.style.transform = `translateY(-${currentIndex * wordHeight}px)`;
+            words.forEach((el, i) => {
+                el.classList.toggle('active', i === currentIndex);
+            });
+        }
     }
 
     updateScroll();
@@ -56,17 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, { passive: false });
 
-    const modeBtn = document.getElementById('LightModeBtn');
-    let isDark = true;
-    if (modeBtn) {
-        modeBtn.textContent = "Light Mode";
-        modeBtn.addEventListener('click', function () {
-            isDark = !isDark;
-            modeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
-            if (!isDark) {
-                window.location.href = "index copy.html"; // Light Mode
+    // Toggle switch logic for light/dark mode
+    const modeToggle = document.getElementById('modeToggle');
+    if (modeToggle) {
+        // Set toggle state based on current page
+        modeToggle.checked = window.location.pathname.includes('index copy.html');
+        modeToggle.addEventListener('change', function () {
+            if (modeToggle.checked) {
+                window.location.href = "index copy.html"; // Light mode
             } else {
-                window.location.href = "index.html"; // Dark Mode
+                window.location.href = "index.html"; // Dark mode
             }
         });
     }

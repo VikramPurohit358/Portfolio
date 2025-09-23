@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let locked = true;
     let animating = false;
 
-    document.body.style.overflow = "hidden";
+    // Only lock scroll while in animated scroll section
+    if (locked) {
+        document.body.style.overflow = "hidden";
+    }
 
     function updateScroll() {
         scrollInner.style.transform = `translateY(-${currentIndex * wordHeight}px)`;
@@ -36,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 animating = true;
                 locked = false;
                 setTimeout(() => {
-                    document.body.style.overflow = "";
+                    document.body.style.overflow = ""; // Allow scrolling again
                     animating = false;
                 }, 900); 
             }

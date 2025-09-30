@@ -1,169 +1,44 @@
-*, *::before, *::after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*{
+    margin: 0px;
 }
-body{
-    font-family: "Poppins", sans-serif;
-    background-color: #222936;
-} 
 
-.bar{
-    display:flex;
-    justify-content: flex-end;
-    
-    background-color: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(10);
-    gap: 10px;
-    padding: 10px;
-    position: fixed;
-    top: 0px;
-    z-index: 4;
+.banner {
     width: 100vw;
-    z-index: 2;
-
-
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #181E32;
 }
 
-span{
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 20px;
-    width: 100px;
-    text-align: center;
-    padding: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 15px;
-    color: aliceblue;
+.banner .slider {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: rotate 50s linear infinite;
 }
 
-span:hover{
-    background-color: rgb(228, 232, 252);
-    color: #222936;
-    border: 3px solid rgb(0, 0, 0);
-    transform: 0.25s;
+.banner .slider .item {
+    position: absolute;
+    inset: 0;
+    transform: 
+        rotateY(calc((var(--position) - 1) * (360deg / var(--quantity))))
+        translateZ(500px);
 }
 
-.video-container {
-    position: relative; /* Essential for positioning the video */
+.banner .slider .item img {
     width: 100%;
-    height: 100vh; /* Example height, you can change this */
-    overflow: hidden;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: fit;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-.video-container video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: -1;
+@keyframes rotate {
+    from { transform: perspective(1000px) rotateY(0deg); }
+    to   { transform: perspective(1000px) rotateY(360deg); }
 }
 
-
-.content {
-    position: relative;
-    z-index: 1; 
-    color: white;
-    text-align: center;
-    padding-top: 20%;
-}
-
-.para {
-    padding-top: 30px;
-    position: absolute;
-    text-align:center;
-    top: 22%;
-    left: 49%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 250px;
-}
-.para h4{
-    font-size: 25px;
-    color: rgb(251, 53, 43);;
-    text-shadow: 0 0 7px rgba(211, 28, 28, 0.606);
-}
-
-.para p{
-    font-size: 15px;
-
-}
-
-.vertical {
-  display: inline-block;
-  transform: rotate(90deg);
-  transform-origin: left top;
-  white-space: nowrap; /* Prevents text from wrapping */
-  position: relative;
-  left: 129%;
-  bottom: 30px;
-  font-size: 30px;
-  color: rgba(251, 53, 43, 0.908);;
-text-shadow: 0 0 12px rgba(211, 28, 28, 0.606);
-  
-}
-
-.Ash{
-    
-    position: absolute;
-    text-align:left;
-    bottom: -1%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-   
-}
-
-.Ash p{
-    font-size: 35px;
-    color: rgba(251, 53, 43, 0.908);
-    text-shadow: 0 0 5px;
-}
-.Ash h1{
-    font-size: 65px;
-    color: rgba(255, 255, 255, 0.908);;
-text-shadow: 0 0 12px;
-  
-}
-
-.Ash div p,.Ash div h1{
-    display: inline-block;
-    border: 0px solid;
-    margin: 2px;
-    
-}
-
-.Ash div h1{
-    position: relative;
-    top: 2px;
-    left: 2px;
-}
-
-.Ash .ing{
-    position: relative;
-    bottom: 15px;
-}
-
-/* Add this at the end or in an appropriate section */
-#LightModeBtn {
-    background-color: #222;
-    color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-    margin: 20px auto;
-    display: block;
-}
-
-#LightModeBtn:hover {
-    background-color: #fff;
-    color: #222;
-    border: 1px solid #222;
-}
